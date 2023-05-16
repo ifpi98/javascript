@@ -10,5 +10,105 @@
 </head>
 <body>
     
+    <img src="./imgs/cat1.png" id="img" class="img1">
+    <h1 id="h1" class="h1c"> 나는 누구인가? (클릭금지)</h1>
+
+    <script>
+        var cat={
+            name : "야옹이",
+            age : "2살"
+        }
+
+        var img1 = document.getElementsByClassName('img1')
+        var h1c = document.getElementsByClassName('h1c');
+        // id로 되어 있을 경우 별도 변수로 저장하지 않아도 된다.
+
+        var i = 0;
+        img1[0].onclick = function(){
+            if (i%2 == 0){      // 나머지가 0이면
+                h1c[0].innerHTML = cat.name+"고 " + cat.age+"입니다";
+                // 나는 누구인가 (클릭금지) 부분의 텍스트가 innerHTML
+                // h1객체의 글자노드
+                // <h1> textNode </h1> 
+            } else{
+                h1c[0].innerHTML = "나는 누구인가???"
+            }
+            i++;
+        }
+
+        img1[0].width=200;
+        img1[0].height=150;
+
+        //이미지에 마우스를 올릴 때 사진교체하기
+        img1[0].onmouseover = function(){
+            this.src="./imgs/cat2.png";
+            this.width=200;                 // img 태그의 width 속성 변경
+            this.height=150;
+        }
+        img1[0].onmouseout = function(){
+            this.src="./imgs/cat1.png";
+            this.width=200;                 // img 태그의 width 속성 변경
+            this.height=150;
+        }
+        // 고전이벤트
+        img1[0].ondblclick = function(){
+            h1.style.backgroundColor="pink";
+            h1.style.border="5px double blue";
+            h1.style.padding="10px";
+            h1.style.borderRadius="30px";
+        }
+
+    </script>
+
+    <script>
+        // var i = 0;
+        // for (i = 0; i < 10; i++){
+        //     document.write("카운터 : " + i + "<br>");
+        // }
+    </script>
+
+    <table border="3">
+        <tr>
+            <td>섭씨온도</td>
+            <td>화씨온도</td>
+        </tr>
+
+        <script>
+            for (celsius = 0; celsius <= 10; celsius = celsius + 1) {
+                document.write("<tr><td>" + celsius + "</td><td>" + ((celsius * 9.0 / 5) + 32) + "</td></tr>");
+            }
+        </script>
+    </table>
+
+    <script>
+    document.write("<h1>구구단표</h1>");
+    document.write("<table border=2 width=50%");
+
+    for (var i = 1; i <= 9; i++) {  
+        document.write("<tr>");
+        document.write("<td>" + i + "</td>");
+
+        for (var j = 2; j <= 9; j++) { 
+            document.write("<td>" + i * j + "</td>");
+        }
+
+        document.write("</tr>");
+    }
+
+    document.write("</table>");
+
+    </script>
+
+    <script>
+        var myCar = { make: "BMW", model: "X5", year: 2013 };
+        var txt="";
+
+        for (var x in myCar) {
+
+                        txt += myCar[x] + " ";
+        }
+        document.write(txt);
+    </script>
+
 </body>
 </html>

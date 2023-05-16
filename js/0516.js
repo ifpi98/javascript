@@ -190,3 +190,25 @@ for(var key in 고양이){
 for (var i in 고양이){
     document.write(i + " : " + 고양이[i] + "<br>");
 }
+
+//사람을 정의
+// 나이는 30살, 이름은 홍길동, 생일은 9월 01일
+// 사람이 밥을 먹고 소화를 했다.
+// 취미는 인터넷게임
+
+var person = { 
+    age: 30,
+    name: '홍길동',
+    birthday: new Date().getMonth() + "월" + new Date().getDate() + "일",   // 오늘이 생일
+    hobby: "internet game",
+    eat(food="밥"){
+        return this.name + "이 " + food + "을 먹고 소화했다 <br>" 
+    }
+};
+
+document.write(person.eat("육개장"));
+for (var i in person){
+    document.write(i + " : " + person[i] + "<br>");
+}
+document.write("생일은 " + person.birthday + "<br>");
+document.write(person.eat() + "<br>");
