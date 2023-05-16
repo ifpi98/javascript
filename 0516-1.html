@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/0516-1.js"></script>
+
+</head>
+<body>
+
+    <h2> 버튼을 클릭했을 때 배경색 변경하기</h2>
+    <button id="button">버튼</button>
+    <hr>
+    <button onclick="chColor(this, 'red')">버튼3</button>
+    <button onclick="chColor(this, 'blue')">버튼4</button>
+    <button onclick="chColor(this, 'pink')">버튼5</button>
+    <div id="div1">
+        <h3> DIV 영역 </h3>
+    </div>
+    <button id="button1">버튼</button>
+
+    <script>
+        function chColor(obj, colorname){
+            console.log(colorname+"가 적용됨");
+            obj.style.color = colorname;
+        }
+    </script>
+
+
+    <script>
+        var color = ["red", "pink", "blue", "orange", "gold"];
+        var body1 = document.getElementsByTagName('body')[0];
+        var body = document.querySelector('body');
+
+        // 객체.이벤트타입 = 이벤트리스너;
+        var i = 0;
+        // button.onclick=function(){
+        button.addEventListener('click', function(){
+            i = i % color.length;
+            body.style.backgroundColor=color[i];
+            i++;
+            // if(i>4){
+            //     i=0;
+            // }
+        });
+
+        function incrementValue(){
+            body.style.backgroundColor=color[i%5];
+            i += 1;
+            // console.log(i);
+        }
+        
+        function incrementValue1(){
+            div_QS.style.backgroundColor=color2[div_color%5];
+            div_QS.style.color = color2[div_color+1];
+            div_color += 1;
+            // console.log(div_color);
+        }
+
+        // setInterval(incrementValue,2000);
+        // setInterval(incrementValue1,3000);
+
+        // 버튼 하나 만들어서, div박스 하나 생성해서
+        // 버튼 클릭하면 배경색 변경하게 하기
+
+        var color2 = ["red", "pink", "blue", "orange", "gold"];
+        var div_color = 0;
+        var div_QS = document.querySelector('div');
+
+        div_QS.style.width="200px";
+        div_QS.style.height="100px";
+        div_QS.style.textAlign="center";
+        div_QS.style.display="table-cell";
+        div_QS.style.verticalAlign="middle";
+
+        button1.onclick=function(){
+            div_color = div_color % color2.length;
+            div_QS.style.backgroundColor=color2[div_color];
+            div_QS.style.color = color2[div_color+1];
+            div_QS.style.fontSize="30px";
+            div_color++;
+        }
+
+    </script>
+
+</body>
+</html>
