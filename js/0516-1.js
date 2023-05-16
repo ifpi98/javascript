@@ -126,5 +126,70 @@ myFunc1();
 // overflow();
 
 // 화살표 함수
-// () => { } 다음에 배우도록 하자.
+// () => { }
 
+function showError(){
+    console.log("error....");
+}
+showError();
+
+var showError=function(){
+    console.log("error2....");
+}
+showError();
+
+var showError=()=>{
+    console.log("error3....");
+}
+showError();
+
+var showName=function(name){
+    var msg=`hello, ${name}`;
+    console.log(msg);
+}
+showName("임꺽정");
+
+// function을 제거하고, 소괄호 뒤에 => 를 붙인다.
+var showName=(name)=>{
+    var msg=`hello, ${name}`;
+    console.log(msg);
+}
+showName("임꺽정");
+
+var add=function(num1, num2){
+    const result=num1+num2;
+    return result;
+}
+console.log(add(5,3));
+
+var add=(num1, num2)=>{
+    const result=num1+num2;
+    return result;
+}
+console.log(add(5,3));
+
+var add=function(num1, num2){
+    return num1+num2;
+}
+console.log(add(15,3));
+
+var add=(num1, num2)=>{
+    return num1+num2;
+}
+console.log(add(15,3));
+
+var add=(num1, num2)=> num1+num2;
+console.log(add(20,3));
+
+var sayHello=function(name){
+    return name;
+}
+
+var sayHello=(name)=>{
+    return name;
+}
+
+var sayHello=name=>name;
+// var 함수명=인수=>리턴값;
+
+// 화살표함수와 일반함수의 차이점은 this에 있다.

@@ -85,5 +85,30 @@
 
     </script>
 
+    <hr>
+    <!-- <button id="buttonA" onmouseover="chColor2(this, 'yellow')" onmouseout="chColor2(this, 'pink')">버튼A</button> -->
+    <button id="buttonA">버튼A</button>
+    
+    <script>
+
+        buttonA.style.backgroundColor = "gold";
+
+        function chColor2(obj, colorname){
+            // console.log(colorname+"가 적용됨");
+            obj.style.backgroundColor = colorname;
+        }
+                
+        // buttonA.mouseover = chColor2(buttonA,'yellow');
+        // buttonA.mouseout = chColor2(buttonA, 'pink');
+
+        buttonA.addEventListener('mouseover', function() {   chColor2(this,'yellow')
+        });
+        buttonA.addEventListener('mouseout', function() {    chColor2(this,'pink')
+        });
+
+
+
+    </script>
+
 </body>
 </html>
