@@ -65,8 +65,8 @@ function ggyunolRank() {
             iosArray = [iosFree, iosPaid, iosGrossing];
             iosArray2 = [iosFree2, iosPaid2, iosGrossing2];
 
-            var removeCount = 0;
             for (var i = 0; i < iosArray.length; i++) {
+                var removeCount = 0;
 
                 for (var j = 0; j < iosArray[i].length; j++) {
                     // console.log(j, iosArray[i])
@@ -90,18 +90,21 @@ function ggyunolRank() {
                 }
                 // console.log(tempobj);
             }
-
+            
+            var iosCaption = ['iOS - Free', 'iOS - Paid', 'iOS - Top Grossing'];
+            
             for (var j = 0; j < contentArray.length; j++) {
 
                 var output = "<table border='1'>";
-                output += "<tr><th>순위</th><th>이전 순위</th><th>게임제목</th><th>제작사</th></tr>";  
+                output += `<caption>${iosCaption[j]}</caption>`
+                output += "<tr><th>순위</th><th>썸네일</th><th>게임제목</th><th>제작사</th></tr>";  
 
                 for (var i = 0; i < maxRank; i++) {
                     output += "<tr>";
                     output += "<td>" + iosArray2[j][i].gRank + "</td>";
                     output += "<td>" + "<img src=" + iosArray2[j][i].icon_url + ">" + "</td>"
-                    output += "<td>" + iosArray2[j][i].name + "</td>";
-                    output += "<td>" + iosArray2[j][i].publisher_name + "</td>";
+                    output += "<td class='title'>" + iosArray2[j][i].name + "</td>";
+                    output += "<td class='pname'>" + iosArray2[j][i].publisher_name + "</td>";
 
                     // output += "<td>" + iosFree[i].previous_rank + "</td>";
                     output += "</tr>"

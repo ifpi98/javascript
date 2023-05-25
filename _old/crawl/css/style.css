@@ -1,8 +1,29 @@
 img {
-    width: 70px;
+    width: 80px;
 }
 
 div {
-    width: 360px;
+    width: 400px;
     float: left;
+    margin: 3px;
+}
+
+td {
+    height: 80px;
+}
+
+.title {
+    width: 220px;
+}
+
+.pname {
+    width: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 8px;
+    /* white-space: nowrap; */
+}
+
+a {
+    font-size: 16px;
 }
