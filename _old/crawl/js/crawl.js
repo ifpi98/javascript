@@ -1,9 +1,16 @@
 // 날짜를 기준으로 정보 가져오기
 
+const today = new Date();
+// console.log(today);
 const yesterday = new Date();
 yesterday.setDate(yesterday.getDate() - 1);
+// console.log(yesterday);
 
 // 연, 월, 일 정보 추출
+const yearT = today.getFullYear();
+const monthT = ('0' + (today.getMonth() + 1)).slice(-2);
+const dayT = ('0' + today.getDate()).slice(-2);
+
 const year = yesterday.getFullYear();
 const month = ('0' + (yesterday.getMonth() + 1)).slice(-2);
 const day = ('0' + yesterday.getDate()).slice(-2);
@@ -11,8 +18,13 @@ const day = ('0' + yesterday.getDate()).slice(-2);
 
 const url = "https://app.sensortower.com/api/ios/category_rankings?offset=0&limit=25&category=6014&country=KR&date="+year+"-"+month+"-"+day+"&device=iphone";
 const url2 = "https://app.sensortower.com/api/android/category_rankings?offset=0&limit=25&category=game&country=KR&date="+year+"-"+month+"-"+day;
+const urlT = "https://app.sensortower.com/api/ios/category_rankings?offset=0&limit=25&category=6014&country=KR&date="+yearT+"-"+monthT+"-"+dayT+"&device=iphone";
+const urlT2 = "https://app.sensortower.com/api/android/category_rankings?offset=0&limit=25&category=game&country=KR&date="+yearT+"-"+monthT+"-"+dayT;
 // console.log(url);
 // console.log(url2);
+// console.log(urlT);
+// console.log(urlT2);
+
 
 var content = document.getElementById('rankTable');
 
@@ -168,7 +180,7 @@ function ggyunolRank(){
 
 
         for (var array of iosArray2){
-            console.log(array);
+            // console.log(array);
         
             array.forEach((ele, i) => {
                 output += "<tr>"
