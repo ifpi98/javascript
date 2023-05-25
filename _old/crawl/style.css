@@ -1,15 +1,15 @@
 img {
-    width: 80px;
+    width: 60px;
 }
 
 div {
-    width: 400px;
+    width: 374px;
     float: left;
-    margin: 3px;
+    margin: 1px;
 }
 
 td {
-    height: 80px;
+    height: 60px;
 }
 
 .title {
@@ -22,8 +22,29 @@ td {
     text-overflow: ellipsis;
     font-size: 8px;
     /* white-space: nowrap; */
+    text-align: center;
 }
 
 a {
-    font-size: 16px;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.rank {
+    width: 40px;
+    text-align: center;
+}
+
+caption {
+    border: 1px, solid, gray;
+    background-color: darkolivegreen;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+    clear: both;
 }

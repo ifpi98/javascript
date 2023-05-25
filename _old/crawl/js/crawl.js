@@ -91,17 +91,17 @@ function ggyunolRank() {
                 // console.log(tempobj);
             }
             
-            var iosCaption = ['iOS - Free', 'iOS - Paid', 'iOS - Top Grossing'];
+            var iosCaption = ['App Store - Free', 'App Store - Paid', 'App Store - Top Grossing'];
             
             for (var j = 0; j < contentArray.length; j++) {
 
                 var output = "<table border='1'>";
                 output += `<caption>${iosCaption[j]}</caption>`
-                output += "<tr><th>순위</th><th>썸네일</th><th>게임제목</th><th>제작사</th></tr>";  
+                output += "<tr><th>순위</th><th>썸네일</th><th>제목</th><th>퍼블리셔</th></tr>";  
 
                 for (var i = 0; i < maxRank; i++) {
                     output += "<tr>";
-                    output += "<td>" + iosArray2[j][i].gRank + "</td>";
+                    output += "<td class='rank'>" + iosArray2[j][i].gRank + "</td>";
                     output += "<td>" + "<img src=" + iosArray2[j][i].icon_url + ">" + "</td>"
                     output += "<td class='title'>" + iosArray2[j][i].name + "</td>";
                     output += "<td class='pname'>" + iosArray2[j][i].publisher_name + "</td>";

@@ -95,11 +95,11 @@ function ggyunolRank() {
 
                 var output = "<table border='1'>";
                 output += `<caption>${aosCaption[j]}</caption>`
-                output += "<tr><th>순위</th><th>썸네일</th><th>게임제목</th><th>제작사</th></tr>";  
+                output += "<tr><th>순위</th><th>썸네일</th><th>제목</th><th>퍼블리셔</th></tr>";  
 
                 for (var i = 0; i < maxRank; i++) {
                     output += "<tr>";
-                    output += "<td>" + aosArray2[j][i].gRank + "</td>";
+                    output += "<td class='rank'>" + aosArray2[j][i].gRank + "</td>";
                     output += "<td>" + "<img src=" + aosArray2[j][i].icon_url + ">" + "</td>"
                     output += "<td class='title'>" + aosArray2[j][i].name + "</td>";
                     output += "<td class='pname'>" + aosArray2[j][i].publisher_name + "</td>";
