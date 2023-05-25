@@ -3,5 +3,6 @@ img {
 }
 
 div {
-    display: flex;
+    width: 360px;
+    float: left;
 }
