@@ -1,3 +1,6 @@
+// 참고 사이트
+// https://app.sensortower.com/top-charts?category=6014&country=KR&device=iphone&os=ios&locale=ko
+
 // 날짜를 기준으로 정보 가져오기
 
 const today = new Date();
@@ -25,6 +28,7 @@ const urlT2 = "https://app.sensortower.com/api/android/category_rankings?offset=
 // console.log(urlT);
 // console.log(urlT2);
 
+const maxRank = 10;
 
 var content = document.getElementById('rankTable');
 
@@ -182,8 +186,8 @@ function ggyunolRank(){
         for (var array of iosArray2){
             // console.log(array);
         
-            array.forEach((ele, i) => {
-                output += "<tr>"
+            for (var i = 0; i < maxRank ; i++){
+                output += "<tr>";
                 output += "<td>" + array[i].gRank + "</td>";
                 output += "<td>" + "<img src=" + array[i].icon_url + ">" + "</td>"
                 output += "<td>" + array[i].name + "</td>";
@@ -191,7 +195,7 @@ function ggyunolRank(){
                 
                 // output += "<td>" + iosFree[i].previous_rank + "</td>";
                 output += "</tr>"
-            });
+            };
         }
 
         output += "</table>";
