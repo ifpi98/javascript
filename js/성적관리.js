@@ -143,3 +143,6 @@ switch(요일){
 
 time.innerHTML=year+"년 " + month + "월 " + day + "일 " + 요일;
 
+setInterval(function(){
+    time2.innerHTML=new Date().toLocaleTimeString();    
+},1000);
