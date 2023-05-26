@@ -62,8 +62,8 @@ function ggyunolRank() {
             var iosPaid2 = [];
             var iosGrossing2 = [];
 
-            iosArray = [iosFree, iosPaid, iosGrossing];
-            iosArray2 = [iosFree2, iosPaid2, iosGrossing2];
+            iosArray = [iosGrossing, iosFree, iosPaid];
+            iosArray2 = [iosGrossing2, iosFree2, iosPaid2];
 
             for (var i = 0; i < iosArray.length; i++) {
                 var removeCount = 0;
@@ -91,7 +91,7 @@ function ggyunolRank() {
                 // console.log(tempobj);
             }
             
-            var iosCaption = ['App Store - Free', 'App Store - Paid', 'App Store - Top Grossing'];
+            var iosCaption = ['App Store - Top Grossing', 'App Store - Free', 'App Store - Paid'];
             
             for (var j = 0; j < contentArray.length; j++) {
 

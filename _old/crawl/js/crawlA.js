@@ -61,8 +61,8 @@ function ggyunolRank() {
             var aosPaid2 = [];
             var aosGrossing2 = [];
 
-            aosArray = [aosFree, aosPaid, aosGrossing];
-            aosArray2 = [aosFree2, aosPaid2, aosGrossing2];
+            aosArray = [aosGrossing, aosFree, aosPaid];
+            aosArray2 = [aosGrossing2, aosFree2, aosPaid2];
 
             
             for (var i = 0; i < aosArray.length; i++) {
@@ -89,7 +89,7 @@ function ggyunolRank() {
                 // console.log(tempobj);
             }
             
-            var aosCaption = ['GooglePlay - Free', 'GooglePlay - Paid', 'GooglePlay - Top Grossing'];
+            var aosCaption = ['GooglePlay - Top Grossing', 'GooglePlay - Free', 'GooglePlay - Paid'];
             
             for (var j = 0; j < contentArray.length; j++) {
 
