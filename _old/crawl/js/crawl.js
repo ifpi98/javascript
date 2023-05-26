@@ -52,72 +52,75 @@ function ggyunolRank() {
         .then(response => response.json())
         .then(data => {
             // console.log(Array.isArray(data));       // false
-
-            var iosFree = data.data.free;
-            var iosPaid = data.data.paid;
-            var iosGrossing = data.data.grossing;
-            // console.log(data.data);
-
-            var iosFree2 = [];
-            var iosPaid2 = [];
-            var iosGrossing2 = [];
-
-            iosArray = [iosGrossing, iosFree, iosPaid];
-            iosArray2 = [iosGrossing2, iosFree2, iosPaid2];
-
-            for (var i = 0; i < iosArray.length; i++) {
-                var removeCount = 0;
-
-                for (var j = 0; j < iosArray[i].length; j++) {
-                    // console.log(j, iosArray[i])
-
-                    var tempobj = {
-                        rank: iosArray[i][j].rank,
-                        icon_url: iosArray[i][j].icon_url,
-                        name: iosArray[i][j].name,
-                        publisher_name: iosArray[i][j].publisher_name,
-                        gRank: ''
-                    }
-
-                    if (MMOLIST.includes(tempobj.name)) {
-                        console.log("MMO Game detected! Remove it!");
-                        removeCount += 1;
-                    } else {
-                        iosArray2[i].push(tempobj);
-                        var newRank = iosArray[i][j].rank - removeCount;
-                        iosArray2[i][newRank - 1].gRank = newRank;
-                    }
-                }
-                // console.log(tempobj);
-            }
-            
-            var iosCaption = ['App Store - Top Grossing', 'App Store - Free', 'App Store - Paid'];
-            
-            for (var j = 0; j < contentArray.length; j++) {
-
-                var output = "<table border='1'>";
-                output += `<caption>${iosCaption[j]}</caption>`
-                output += "<tr><th>순위</th><th>썸네일</th><th>제목</th><th>퍼블리셔</th></tr>";  
-
-                for (var i = 0; i < maxRank; i++) {
-                    output += "<tr>";
-                    output += "<td class='rank'>" + iosArray2[j][i].gRank + "</td>";
-                    output += "<td>" + "<img src=" + iosArray2[j][i].icon_url + ">" + "</td>"
-                    output += "<td class='title'>" + iosArray2[j][i].name + "</td>";
-                    output += "<td class='pname'>" + iosArray2[j][i].publisher_name + "</td>";
-
-                    // output += "<td>" + iosFree[i].previous_rank + "</td>";
-                    output += "</tr>"
-                };
-
-                output += "</table>";
-                contentArray[j].innerHTML = output;
-                // content.innerHTML = output;
-            }
+            insideCompute(data);
 
         })
 
 }
+
+function insideCompute(fetchdata) {
+    var iosFree = fetchdata.data.free;
+    var iosPaid = fetchdata.data.paid;
+    var iosGrossing = fetchdata.data.grossing;
+
+    var iosFree2 = [];
+    var iosPaid2 = [];
+    var iosGrossing2 = [];
+
+    iosArray = [iosGrossing, iosFree, iosPaid];
+    iosArray2 = [iosGrossing2, iosFree2, iosPaid2];
+
+    for (var i = 0; i < iosArray.length; i++) {
+        var removeCount = 0;
+
+        for (var j = 0; j < iosArray[i].length; j++) {
+            // console.log(j, iosArray[i])
+
+            var tempobj = {
+                rank: iosArray[i][j].rank,
+                icon_url: iosArray[i][j].icon_url,
+                name: iosArray[i][j].name,
+                publisher_name: iosArray[i][j].publisher_name,
+                gRank: ''
+            }
+
+            if (MMOLIST.includes(tempobj.name)) {
+                console.log("MMO Game detected! Remove it!");
+                removeCount += 1;
+            } else {
+                iosArray2[i].push(tempobj);
+                var newRank = iosArray[i][j].rank - removeCount;
+                iosArray2[i][newRank - 1].gRank = newRank;
+            }
+        }
+        // console.log(tempobj);
+    }
+
+    var iosCaption = ['App Store - Top Grossing', 'App Store - Free', 'App Store - Paid'];
+
+    for (var j = 0; j < contentArray.length; j++) {
+
+        var output = "<table border='1'>";
+        output += `<caption>${iosCaption[j]}</caption>`
+        output += "<tr><th>순위</th><th>썸네일</th><th>제목</th><th>퍼블리셔</th></tr>";
+
+        for (var i = 0; i < maxRank; i++) {
+            output += "<tr>";
+            output += "<td class='rank'>" + iosArray2[j][i].gRank + "</td>";
+            output += "<td>" + "<img src=" + iosArray2[j][i].icon_url + ">" + "</td>"
+            output += "<td class='title'>" + iosArray2[j][i].name + "</td>";
+            output += "<td class='pname'>" + iosArray2[j][i].publisher_name + "</td>";
+
+            // output += "<td>" + iosFree[i].previous_rank + "</td>";
+            output += "</tr>"
+        };
+
+        output += "</table>";
+        contentArray[j].innerHTML = output;
+        // content.innerHTML = output;
+    }
+}
+
 
 ggyunolRank();
 

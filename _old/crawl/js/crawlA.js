@@ -45,78 +45,79 @@ fetch('MMOLIST.txt')
     })
     .catch(error => console.error(error));
 
-    // console.log(url2);
+// console.log(url2);
 
 function ggyunolRank() {
 
     fetch(url2)
         .then(response => response.json())
         .then(data => {
-
-            var aosFree = data.data.free;
-            var aosPaid = data.data.paid;
-            var aosGrossing = data.data.grossing;
-
-            var aosFree2 = [];
-            var aosPaid2 = [];
-            var aosGrossing2 = [];
-
-            aosArray = [aosGrossing, aosFree, aosPaid];
-            aosArray2 = [aosGrossing2, aosFree2, aosPaid2];
-
-            
-            for (var i = 0; i < aosArray.length; i++) {
-                var removeCount = 0;
-                for (var j = 0; j < aosArray[i].length; j++) {
-                    
-                    var tempobj = {
-                        rank: aosArray[i][j].rank,
-                        icon_url: aosArray[i][j].icon_url,
-                        name: aosArray[i][j].name,
-                        publisher_name: aosArray[i][j].publisher_name,
-                        gRank: ''
-                    }
-
-                    if (MMOLIST.includes(tempobj.name)) {
-                        console.log("MMO Game detected! Remove it!");
-                        removeCount += 1;
-                    } else {
-                        aosArray2[i].push(tempobj);
-                        var newRank = aosArray[i][j].rank - removeCount;
-                        aosArray2[i][newRank - 1].gRank = newRank;
-                    }
-                }
-                // console.log(tempobj);
-            }
-            
-            var aosCaption = ['GooglePlay - Top Grossing', 'GooglePlay - Free', 'GooglePlay - Paid'];
-            
-            for (var j = 0; j < contentArray.length; j++) {
-
-                var output = "<table border='1'>";
-                output += `<caption>${aosCaption[j]}</caption>`
-                output += "<tr><th>순위</th><th>썸네일</th><th>제목</th><th>퍼블리셔</th></tr>";  
-
-                for (var i = 0; i < maxRank; i++) {
-                    output += "<tr>";
-                    output += "<td class='rank'>" + aosArray2[j][i].gRank + "</td>";
-                    output += "<td>" + "<img src=" + aosArray2[j][i].icon_url + ">" + "</td>"
-                    output += "<td class='title'>" + aosArray2[j][i].name + "</td>";
-                    output += "<td class='pname'>" + aosArray2[j][i].publisher_name + "</td>";
-
-                    // output += "<td>" + iosFree[i].previous_rank + "</td>";
-                    output += "</tr>"
-                };
-
-                output += "</table>";
-                contentArray[j].innerHTML = output;
-                // content.innerHTML = output;
-            }
-
+            insideCompute(data);
         })
 
 }
 
+function insideCompute(fetchdata) {
+    var aosFree = fetchdata.data.free;
+    var aosPaid = fetchdata.data.paid;
+    var aosGrossing = fetchdata.data.grossing;
+
+    var aosFree2 = [];
+    var aosPaid2 = [];
+    var aosGrossing2 = [];
+
+    aosArray = [aosGrossing, aosFree, aosPaid];
+    aosArray2 = [aosGrossing2, aosFree2, aosPaid2];
+
+
+    for (var i = 0; i < aosArray.length; i++) {
+        var removeCount = 0;
+        for (var j = 0; j < aosArray[i].length; j++) {
+
+            var tempobj = {
+                rank: aosArray[i][j].rank,
+                icon_url: aosArray[i][j].icon_url,
+                name: aosArray[i][j].name,
+                publisher_name: aosArray[i][j].publisher_name,
+                gRank: ''
+            }
+
+            if (MMOLIST.includes(tempobj.name)) {
+                console.log("MMO Game detected! Remove it!");
+                removeCount += 1;
+            } else {
+                aosArray2[i].push(tempobj);
+                var newRank = aosArray[i][j].rank - removeCount;
+                aosArray2[i][newRank - 1].gRank = newRank;
+            }
+        }
+        // console.log(tempobj);
+    }
+
+    var aosCaption = ['GooglePlay - Top Grossing', 'GooglePlay - Free', 'GooglePlay - Paid'];
+
+    for (var j = 0; j < contentArray.length; j++) {
+
+        var output = "<table border='1'>";
+        output += `<caption>${aosCaption[j]}</caption>`
+        output += "<tr><th>순위</th><th>썸네일</th><th>제목</th><th>퍼블리셔</th></tr>";
+
+        for (var i = 0; i < maxRank; i++) {
+            output += "<tr>";
+            output += "<td class='rank'>" + aosArray2[j][i].gRank + "</td>";
+            output += "<td>" + "<img src=" + aosArray2[j][i].icon_url + ">" + "</td>"
+            output += "<td class='title'>" + aosArray2[j][i].name + "</td>";
+            output += "<td class='pname'>" + aosArray2[j][i].publisher_name + "</td>";
+
+            // output += "<td>" + iosFree[i].previous_rank + "</td>";
+            output += "</tr>"
+        };
+
+        output += "</table>";
+        contentArray[j].innerHTML = output;
+        // content.innerHTML = output;
+    }
+}
 ggyunolRank();
 
 
