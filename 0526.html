@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+
+</head>
+<body>
+
+    <h1> 자바스크립트 오류처리</h1>
+    <p> try catch 같이 처리한다</p>
+    <p> try 블록에 오류를 테스트할 구문을 작성</p>
+    <p> catch 블록에 오류를 처리할 구문을 작성</p>
+
+    <pre>
+        try {
+
+        }   catch(err) {
+
+        }
+    </pre>
+    <p id="test"> 에러 메시지가 출력되는 곳</p>
+    <hr>
+    <p> 1~10 사이의 숫자를 입력</p>
+    <input type="text" id="numBox">
+    <button type="button" id="btn">테스트</button>
+    <p id="errText"></p>
+
+    <pre>
+        try {
+            // 실제 작성할 테스트 코드 블록
+        }   catch(err) {
+            // 에러 코드 블록
+        }
+        finally{
+            // try catch 상관없이 실행되는 코드
+        }
+
+        자바스크립트 에러객체
+        오류발생시 오류정보를 제공하는
+        오류관련 객체가 내장되어 있다.
+
+        try catch에서 catch(err) 
+        err => Error 객체
+        err.name    오류 이름
+        err.message 오류 메시지
+
+        에러 이름 종류
+        1) EvalError        
+        2) RangeError       - 지정된 범위를 벗어나는 등의
+        3) ReferenceError   - 없는데 호출했다 등의
+        4) SyntaxError      - 문법 오류, 괄호의 잘못된 사용 등
+        5) TypeError        - 해당 메소드를 실행할 수 없는 타입
+        6) URIError
+
+    </pre>
+    <p id="errText2"></p>
+
+    <script src="js/0526.js"></script>
+</body>
+</html>
