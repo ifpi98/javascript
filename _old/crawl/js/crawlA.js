@@ -7,6 +7,7 @@ const today = new Date();
 // console.log(today);
 const yesterday = new Date();
 yesterday.setDate(yesterday.getDate() - 1);
+// today.setDate(today.getDate() + 1);
 // console.log(yesterday);
 
 // 연, 월, 일 정보 추출
@@ -45,16 +46,41 @@ fetch('MMOLIST.txt')
     })
     .catch(error => console.error(error));
 
-// console.log(url2);
-
 function ggyunolRank() {
 
-    fetch(url2)
-        .then(response => response.json())
-        .then(data => {
-            insideCompute(data);
+    // Fetch data from address a, and if it fails, try address b
+    fetchData(urlT2)
+        .catch(error => {
+            console.log('Failed to fetch from address a. Trying address b...');
+            return fetchData(url2);
         })
+        .then(data => {
+            // Process the fetched data
+            insideCompute(data);
+            console.log('Fetched data:', data);
+        })
+        .catch(error => {
+            console.log('Both attempts failed. Error:', error);
+        });
 
+    //     fetch(url2)
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             insideCompute(data);
+    //         })
+
+}
+
+// Function to fetch from a specific URL
+function fetchData(url) {
+    return fetch(url)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error("Network response was not OK");
+            }
+        });
 }
 
 function insideCompute(fetchdata) {
@@ -69,9 +95,9 @@ function insideCompute(fetchdata) {
     aosArray = [aosGrossing, aosFree, aosPaid];
     aosArray2 = [aosGrossing2, aosFree2, aosPaid2];
 
-
     for (var i = 0; i < aosArray.length; i++) {
         var removeCount = 0;
+        
         for (var j = 0; j < aosArray[i].length; j++) {
 
             var tempobj = {
@@ -91,7 +117,6 @@ function insideCompute(fetchdata) {
                 aosArray2[i][newRank - 1].gRank = newRank;
             }
         }
-        // console.log(tempobj);
     }
 
     var aosCaption = ['GooglePlay - Top Grossing', 'GooglePlay - Free', 'GooglePlay - Paid'];

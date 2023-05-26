@@ -7,6 +7,7 @@ const today = new Date();
 // console.log(today);
 const yesterday = new Date();
 yesterday.setDate(yesterday.getDate() - 1);
+// today.setDate(today.getDate() + 1);
 // console.log(yesterday);
 
 // 연, 월, 일 정보 추출
@@ -45,17 +46,41 @@ fetch('MMOLIST.txt')
     })
     .catch(error => console.error(error));
 
-
 function ggyunolRank() {
 
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            // console.log(Array.isArray(data));       // false
-            insideCompute(data);
-
+    // Fetch data from address a, and if it fails, try address b
+    fetchData(urlT)
+        .catch(error => {
+            console.log('Failed to fetch from address a. Trying address b...');
+            return fetchData(url);
         })
+        .then(data => {
+            // Process the fetched data
+            insideCompute(data);
+            console.log('Fetched data:', data);
+        })
+        .catch(error => {
+            console.log('Both attempts failed. Error:', error);
+        });
 
+    // fetch(url)
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         insideCompute(data);
+    //     })
+
+}
+
+// Function to fetch from a specific URL
+function fetchData(url) {
+    return fetch(url)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error("Network response was not OK");
+            }
+        });
 }
 
 function insideCompute(fetchdata) {
@@ -74,8 +99,7 @@ function insideCompute(fetchdata) {
         var removeCount = 0;
 
         for (var j = 0; j < iosArray[i].length; j++) {
-            // console.log(j, iosArray[i])
-
+            
             var tempobj = {
                 rank: iosArray[i][j].rank,
                 icon_url: iosArray[i][j].icon_url,
@@ -93,7 +117,6 @@ function insideCompute(fetchdata) {
                 iosArray2[i][newRank - 1].gRank = newRank;
             }
         }
-        // console.log(tempobj);
     }
 
     var iosCaption = ['App Store - Top Grossing', 'App Store - Free', 'App Store - Paid'];
@@ -120,8 +143,6 @@ function insideCompute(fetchdata) {
         // content.innerHTML = output;
     }
 }
-
-
 ggyunolRank();
 
 
