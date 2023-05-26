@@ -18,6 +18,10 @@ td {
     /* font-size: 14px; */
 }
 
+td img {
+    vertical-align: middle;
+}
+
 .title {
     width: 220px;
 }
