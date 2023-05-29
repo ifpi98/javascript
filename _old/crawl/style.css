@@ -5,7 +5,8 @@ img {
 .tables {
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
+    align-items: flex-start;
     flex-wrap: wrap;
     table-layout: fixed;
 }
@@ -76,4 +77,5 @@ caption {
 
 p {
     clear: both;
+    text-align: center;
 }

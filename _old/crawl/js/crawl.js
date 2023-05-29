@@ -25,12 +25,13 @@ const url2 = "https://app.sensortower.com/api/android/category_rankings?offset=0
 const urlT = "https://app.sensortower.com/api/ios/category_rankings?offset=0&limit=25&category=6014&country=KR&date=" + yearT + "-" + monthT + "-" + dayT + "&device=iphone";
 const urlT2 = "https://app.sensortower.com/api/android/category_rankings?offset=0&limit=25&category=game&country=KR&date=" + yearT + "-" + monthT + "-" + dayT;
 
-const maxRank = 10;
+// const maxRank = 10;
 
 var content = document.getElementById('rankTable');
 var content2 = document.getElementById('rankTable2');
 var content3 = document.getElementById('rankTable3');
-var contentArray = [content, content2, content3];
+var content4 = document.getElementById('rankTable4');
+var contentArray = [content, content2, content3, content4];
 
 let MMOLIST = [];
 
@@ -92,8 +93,10 @@ function insideCompute(fetchdata) {
     var iosPaid2 = [];
     var iosGrossing2 = [];
 
+    var mmoGrossingGames = [];
+
     iosArray = [iosGrossing, iosFree, iosPaid];
-    iosArray2 = [iosGrossing2, iosFree2, iosPaid2];
+    iosArray2 = [iosGrossing2, iosFree2, iosPaid2, mmoGrossingGames];
 
     for (var i = 0; i < iosArray.length; i++) {
         var removeCount = 0;
@@ -110,7 +113,17 @@ function insideCompute(fetchdata) {
 
             if (MMOLIST.includes(tempobj.name)) {
                 console.log("MMO Game detected! Remove it!");
+
+                if (i == 0){
+                    // console.log("MMO Game in TG detected! Remove it!");
+                    mmoGrossingGames.push(tempobj);
+                    mmoGrossingGames[removeCount].gRank = removeCount + 1;
+                    // console.log(mmoGrossingGames[removeCount]);
+                    // console.log(mmoGrossingGames[removeCount].gRank);
+                }
+
                 removeCount += 1;
+
             } else {
                 iosArray2[i].push(tempobj);
                 var newRank = iosArray[i][j].rank - removeCount;
@@ -119,13 +132,23 @@ function insideCompute(fetchdata) {
         }
     }
 
-    var iosCaption = ['App Store - Top Grossing', 'App Store - Free', 'App Store - Paid'];
+    // console.log(mmoGrossingGames);
 
+    var iosCaption = ['App Store - Top Grossing', 'App Store - Free', 'App Store - Paid', 'App Store - Top Grossing (MMORPG)'];
+    
     for (var j = 0; j < contentArray.length; j++) {
 
         var output = "<table border='1'>";
         output += `<caption>${iosCaption[j]}</caption>`
         output += "<tr><th>순위</th><th>썸네일</th><th>제목</th><th>퍼블리셔</th></tr>";
+
+        // console.log(iosArray2[j].length);
+
+        if(iosArray2[j].length < 10){
+            var maxRank = iosArray2[j].length;
+        } else {
+            var maxRank = 10;
+        }
 
         for (var i = 0; i < maxRank; i++) {
             output += "<tr>";

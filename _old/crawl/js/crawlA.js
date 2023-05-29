@@ -30,7 +30,8 @@ const maxRank = 10;
 var content = document.getElementById('rankTable');
 var content2 = document.getElementById('rankTable2');
 var content3 = document.getElementById('rankTable3');
-var contentArray = [content, content2, content3];
+var content4 = document.getElementById('rankTable4');
+var contentArray = [content, content2, content3, content4];
 
 let MMOLIST = [];
 
@@ -92,8 +93,10 @@ function insideCompute(fetchdata) {
     var aosPaid2 = [];
     var aosGrossing2 = [];
 
+    var mmoGrossingGames = [];
+
     aosArray = [aosGrossing, aosFree, aosPaid];
-    aosArray2 = [aosGrossing2, aosFree2, aosPaid2];
+    aosArray2 = [aosGrossing2, aosFree2, aosPaid2, mmoGrossingGames];
 
     for (var i = 0; i < aosArray.length; i++) {
         var removeCount = 0;
@@ -110,7 +113,17 @@ function insideCompute(fetchdata) {
 
             if (MMOLIST.includes(tempobj.name)) {
                 console.log("MMO Game detected! Remove it!");
+                
+                if (i == 0){
+                    // console.log("MMO Game in TG detected! Remove it!");
+                    mmoGrossingGames.push(tempobj);
+                    mmoGrossingGames[removeCount].gRank = removeCount + 1;
+                    // console.log(mmoGrossingGames[removeCount]);
+                    // console.log(mmoGrossingGames[removeCount].gRank);
+                }
+
                 removeCount += 1;
+
             } else {
                 aosArray2[i].push(tempobj);
                 var newRank = aosArray[i][j].rank - removeCount;
@@ -119,13 +132,23 @@ function insideCompute(fetchdata) {
         }
     }
 
-    var aosCaption = ['GooglePlay - Top Grossing', 'GooglePlay - Free', 'GooglePlay - Paid'];
+    // console.log(mmoGrossingGames);
+
+    var aosCaption = ['GooglePlay - Top Grossing', 'GooglePlay - Free', 'GooglePlay - Paid', 'GooglePlay - Top Grossing (MMORPG)'];
 
     for (var j = 0; j < contentArray.length; j++) {
 
         var output = "<table border='1'>";
         output += `<caption>${aosCaption[j]}</caption>`
         output += "<tr><th>순위</th><th>썸네일</th><th>제목</th><th>퍼블리셔</th></tr>";
+
+        // console.log(iosArray2[j].length);
+
+        if(aosArray2[j].length < 10){
+            var maxRank = aosArray2[j].length;
+        } else {
+            var maxRank = 10;
+        }
 
         for (var i = 0; i < maxRank; i++) {
             output += "<tr>";
