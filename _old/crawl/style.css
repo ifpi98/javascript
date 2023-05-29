@@ -2,10 +2,32 @@ img {
     width: 70px;
 }
 
-div {
+.tables {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    table-layout: fixed;
+}
+
+.rt {
+    /* white-space: nowrap; */
+    overflow: hidden;
+    text-overflow: ellipsis;
     width: 374px;
-    float: left;
-    margin: 1px;
+    /* float: left; */
+    margin: 5px;
+}
+
+h1 {
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    
+    .rt {
+        /* margin: 5px; */
+    }
 }
 
 th {
@@ -15,7 +37,7 @@ th {
 
 td {
     height: 70px;
-    /* font-size: 14px; */
+    font-size: 14px;
 }
 
 td img {
@@ -51,9 +73,6 @@ caption {
     color: white;
 }
 
-h1 {
-    text-align: center;
-}
 
 p {
     clear: both;
