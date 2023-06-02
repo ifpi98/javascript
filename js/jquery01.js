@@ -86,6 +86,7 @@ $('select').change(function(){
 // 요소: first
 // 요소: last
 
+
 $('ul>li:odd').css('background','steelblue');
 $('ul>li:even').css('background','cyan');
 $('ul>li:last').css('border','3px solid red');
