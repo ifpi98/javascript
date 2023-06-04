@@ -134,7 +134,7 @@ function insideCompute(fetchdata) {
 
     // console.log(mmoGrossingGames);
 
-    var aosCaption = ['GooglePlay - Top Grossing', 'GooglePlay - Free', 'GooglePlay - Paid', 'GooglePlay - Top Grossing (MMORPG)'];
+    var aosCaption = ['GooglePlay - Top Grossing', 'GooglePlay - Free', 'GooglePlay - Paid', 'GooglePlay - Top Grossing (리니지라이크)'];
 
     for (var j = 0; j < contentArray.length; j++) {
 
