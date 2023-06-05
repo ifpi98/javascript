@@ -134,7 +134,7 @@ function insideCompute(fetchdata) {
 
     // console.log(mmoGrossingGames);
 
-    var iosCaption = ['App Store - Top Grossing', 'App Store - Free', 'App Store - Paid', 'App Store - Top Grossing (MMORPG)'];
+    var iosCaption = ['App Store - Top Grossing', 'App Store - Free', 'App Store - Paid', 'App Store - Top Grossing (리니지라이크)'];
     
     for (var j = 0; j < contentArray.length; j++) {
 
