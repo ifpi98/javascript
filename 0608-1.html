@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 0608 HTML</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+    <style>
+        .color0{color:red}
+        .color1{color:blue}
+        .color2{color:green}
+        .color3{color:lime}
+        .color4{color:gold}
+        .color5{color:orange}
+        .color6{color:steelblue}
+        .color7{color:cyan}
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+
+</head>
+
+<body>
+    
+    <form name = "login">
+        <p>
+            나이: <input type="text" name="age" onkeypress="checkData()" style="ime-mode: inactive">
+        </p>
+    </form>
+
+    <script>
+        //숫자만 입력한다.
+        function checkData(){
+            //alert(event.keyCode);
+            console.log(event.keyCode);
+            if(!(event.keyCode>=48 && event.keyCode<= 57)){
+                alert("숫자만 입력하세요");
+                event.returnValue = false;
+                // 입력한 값은 입력되지 않는다.
+            }else{
+
+            }
+        }
+
+    </script>>
+    <h1> 제목1</h1>
+    <h1> 제목2</h1>
+
+
+    <h2> 아래 리스트를 1초 단위로 배경색이 순차적으로 변경되게 하세요.</h2>
+    <ul id="wrapper">
+        <li>01</li>
+        <li>02</li>
+        <li>03</li>
+        <li>04</li>
+        <li>05</li>
+        <li>06</li>
+        <li>07</li>
+        <li>08</li>
+    </ul>
+    <button>addClass</button>
+    <button>removeClass</button>
+    <button>toggleClass</button>
+    <hr>
+    <img src="/imgs/cat1.png">
+    <img src="/imgs/cat2.png">
+    <img src="/imgs/cat2.png">
+    <hr>
+    <input type="text">
+    <hr>
+    <p> welcome </p>
+    <p> welcome </p>
+    <p> welcome </p>
+    <p> welcome </p>
+
+   
+    <script>
+
+var color = ["red", "blue", "green", "pink", "lime", "cyan", "gold", "tomato"]
+
+// var i = 0;
+// setInterval(() => {
+//     $('#wrapper li').eq(i).css('background',color[i])
+//     // console.log(i);
+//     i++;
+//     if(i==9){
+//         $('#wrapper li').css('background','none');     
+//     }
+//     i = i% (color.length+1);
+// },1000)
+
+// setInterval(() => {
+//     $('#wrapper li').css('background','none')    
+// },(color.length+1)*1000)
+
+    </script>
+     <script src="js/0608-1.js"></script>
+
+</body>
+
+
+</html>
