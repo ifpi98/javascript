@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+.tab-wrapper {
+    width: 900px;
+}
+
+.tab-menu {
+    display: flex;
+}
+
+.tab-menu li {
+    flex: 1;
+    border: 1px solid;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+}
+
+.tab-content div {
+    display: none;
+    border: 1px solid;
+    padding: 10px;
+    font-size: 2em;
+}
+
+.tab-menu li a.active {
+    background-color: black;
+    color: white;
+}
+
+#tab-1 {
+    display: block;
+}

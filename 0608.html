@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 0608 HTML</title>
+
+</head>
+
+<body>
+    
+    <h2> 폼에서 유효성검사-</h2>
+    <h3> 기본 유효성 검사 / 데이터형식유효성검사(정규표현식)</h3>
+    
+    <form name="login">
+        <p>이름: <input type='text' name='name'></p>
+        <p>아이디:<input type='text' name='id'></p>
+        <p>비밀번호:<input type='password' name="passwd" onkeypress="press(this.form)"></p>
+        <p><input type="submit" value="전송" onclick="checkForm()"></p>
+    </form>
+    <div id="info"></div>
+
+    <script src="js/0608.js"></script>
+</body>
+
+</html>
