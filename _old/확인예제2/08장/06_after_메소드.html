@@ -14,7 +14,11 @@
 		</style>
 		<script>
 			$(document).ready(function(){
-				
+				// $('<li class="newEl">3-3</li>').insertAfter('ul>li>ul>li:eq(1)');
+				var NEWEL = $('.newEl');
+
+				// .insertAfter('ul>li>ul>li:eq(1)');
+				$('ul>li>ul>li:eq(1)').after(NEWEL);
 			});
 		</script>
 	</head>
