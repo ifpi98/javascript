@@ -13,6 +13,12 @@
 		</style>
 		<script>
 			$(document).ready(function(){
+				if($('#el > ul > li').is('#nextEl')){
+					// alert('존재합니다.');
+					$('#el > ul > #nextEl').css('color','red');
+				}else{
+					console.log(false);
+				}
 				
 			});
 		</script>

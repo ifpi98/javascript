@@ -13,7 +13,10 @@
 		</style>
 		<script>
 			$(document).ready(function(){
-				
+				$('#childEl').parent('ul li ul').css('color','red');
+				$('#childEl').parent('ul li ul').css('background','blue');
+				// $('.first').nextUntil(':nth-child(5)').css('color','red');
+				// $('.first').nextUntil(':nth-child(5)').css('background','blue');
 			});
 		</script>
 	</head>
