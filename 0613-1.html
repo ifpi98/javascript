@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 효과 애니메이션</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/0613-1.js" defer></script>
+    <style>
+        #box{width:200px; height:150px; background: pink;
+            border:3px solid;
+        }
+        #box3{
+            position: relative;
+            width:200px; height:150px; background: red;
+            border:3px solid;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1> 효과 애니메이션</h1>
+    <button>show</button>
+    <button>hide</button>
+    <button>toggle</button>
+    <hr>
+    <button>slideDown</button>
+    <button>slideUp</button>
+    <button>slideToggle</button>
+    <hr>
+    <button>fadeIn</button>
+    <button>fadeOut</button>
+    <button>fadeToggle</button>
+    <button>fadeTo('slow',0.5)</button>
+    <hr>
+    <div id="box">welcome</div>
+    <h2> 사용자 정의 애니메이션</h2>
+    <a href="#">animate</a>
+    <a href="#">animate2</a>
+    <hr>
+    <div id="box2">welcome</div>
+    <h3> stop() delay() clearQueue()</h3>
+    <h2> stop animate test하기 stop(clearQueue, goToEnd)</h2>
+    <button>stop(false)</button>
+    <button>stop(true)</button>
+    <button>stop(false,true)</button>
+    <button>stop(true,true)</button>
+    <div id="box3">welcome</div>
+
+</body>
+
+</html>

@@ -14,8 +14,27 @@
 </style>
 <script>
 	$(document).ready(function(){
-		
+		var current = 0;
+		var banner = $('#wrapper li')
+
+		setInterval(function(){
+			var prev = banner.eq(current);
+			// prev.css('top',0).animate({top:'-100%'});
+			move(prev, 0, '-100%')
+
+			current++;
+			if (current==banner.length) current=0;
+			var next = banner.eq(current);
+			
+			// next.css('top','100%').animate({top:0});
+			move(next, '100%', 0)
+
+		},1000)
 	});
+
+	function move(tg, start, end, dur=1000){
+		tg.css('top',start).animate({top:end},{duration:dur});
+	}
 </script>
 </head>
 <body>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> todo List</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/0613.js" defer></script>
+
+</head>
+
+<body>
+
+    <h1> 폼관련 이벤트</h1>
+    <form action="회원가입.jsp">
+        <select>
+            <option value="daum">다음</option>
+            <option value="naver">네이버</option>
+            <option value="google">구글</option>
+        </select>
+
+        <input type="submit">
+    </form>
+
+    <div id="info"></div>
+
+    <h2> load와 ready의 차이점</h2>
+    <p> load는 이미지 또는 프레임요소에 연동된 소스가 완료된 후</p>
+    <p> ready는 문서객체가 로딩이 완료된 후</p>
+
+    <!-- <div id="wrap">
+        <iframe src="http://www.daum.net"></iframe>
+    </div> -->
+    <hr>
+    <div class="parent">
+        <input type="text">
+    </div>
+
+    <h3> 슬라이드바가 있는 이미지슬라이드</h3>
+    <input type="range" min="0" max="10" value="0">
+    <span></span>
+    <div id="img" style="display:;">
+        <img src="./imgs/otherimage10.jpg">
+        <img src="./imgs/otherimage11.jpg">
+        <img src="./imgs/otherimage12.jpg">
+        <img src="./imgs/otherimage13.jpg">
+        <img src="./imgs/otherimage14.jpg">
+        <img src="./imgs/otherimage15.jpg">
+        <img src="./imgs/otherimage16.jpg">
+        <img src="./imgs/otherimage17.jpg">
+        <img src="./imgs/otherimage18.jpg">
+        <img src="./imgs/otherimage19.jpg">
+        
+    </div>
+
+
+
+
+
+</body>
+
+</html>
