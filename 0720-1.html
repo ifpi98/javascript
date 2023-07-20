@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var day = prompt("월화수목금토일 중에서 입력하세요");
+
+        if (day === null) {
+            // 경고 창을 띄웁니다.
+            alert("잘못입력하였음");
+        } else {
+
+            switch (day) {
+                case "월":
+                case "화":
+                case "수":
+                case "목":
+                case "금":
+                    document.write(day + "요일은 출근")
+                    // console.log("출근");
+                    break;
+                case "토":
+                case "일":
+                    document.write(day + "요일은 휴일")
+                    // console.log("휴일");
+                    break;
+                default:
+                    document.write("알수없는 문자입니다. 다시 입력해 주세요.")
+                    break;
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3> 3으로 나눈 나머지가 1인 수만 더하기</h3>
+    <hr>
+    <script>
+        sum = 0;
+
+        for (var i = 1; i < 11; i++) {
+            if (i % 3 != 1) {
+                console.log("Skip")
+                continue;
+            }
+
+            console.log("sum plus i", i)
+            sum = sum + i;
+            document.write(i+" ");
+        }
+        document.write("합은 "+sum);
+        console.log(sum);
+        // document.write(i + "까지 더하면 3000을 넘음 : " + sum)
+    </script>
+
+</body>
+
+</html>

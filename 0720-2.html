@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        tempNumber1 = 10203;
+        tempNumber2 = "안녕하세요";
+        tempNumber3 = -1293;
+        tempNumber4 = 5005;
+
+        tempString = "";
+        lennumber = 0;
+        number = 0;
+
+        document.write(tempNumber1 + ": " + checkNumber(tempNumber1) + "<hr>");
+        document.write(tempNumber2 + ": " + checkNumber(tempNumber2) + "<hr>");
+        document.write(tempNumber3 + ": " + checkNumber(tempNumber3) + "<hr>");
+        document.write(tempNumber4 + ": " + checkNumber(tempNumber4) + "<hr>");
+
+        function checkNumber(_tempNumber) {
+
+            var tempArray = [];
+
+            if (!isFinite(_tempNumber)) {
+                return "숫자가 아닙니다";
+            } else if (_tempNumber < 0) {
+                return "0이거나 음수입니다.";
+            } else {
+
+                while (_tempNumber != 0) {
+                    tempArray.push(_tempNumber % 10);
+                    _tempNumber = parseInt(_tempNumber / 10);
+                    console.log(_tempNumber)
+                }
+
+                // console.log(tempArray[0]);
+                // console.log(tempArray[tempArray.length - 1]);
+
+                if (tempArray[0] == tempArray[tempArray.length - 1]) {
+                    return "같습니다.";
+                } else {
+                    return "다릅니다.";
+                }
+
+                // // console.log(_tempNumber);
+                // tempString = _tempNumber.toString()
+                // lennumber = tempString.length;
+                // // console.log(lennumber);
+                // // console.log(tempString[0]);
+                // // console.log(tempString[lennumber-1]);
+                // if (tempString[0] == tempString[lennumber - 1]) {
+                //     return "같습니다.";
+                // } else {
+                //     return "다릅니다.";
+                // }
+            }
+        }
+
+    </script>
+</body>
+
+</html>
