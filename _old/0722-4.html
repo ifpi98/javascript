@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h2> book 객체 배열 만들기</h2>
+    <hr>
+    <script>
+
+        function Book(_title, _author, _price) {
+            this.title = _title;
+            this.author = _author;
+            this.price = _price;
+        }
+
+        let bookArray = [];
+
+        for (var i = 0; i < 5; i++) {
+            var tempString = prompt("제목, 저자, 가격 의 형태로 적어주세요")
+            let answerArray = tempString.split(",")
+
+            bookArray[i] = new Book(answerArray[0], answerArray[1], answerArray[2])
+            document.write(bookArray[i].title + ", " + bookArray[i].author + ", " + bookArray[i].price + "<br>");
+        }
+
+        var maxPrice = 0;
+        var mostExpensiveBook;
+
+        for (var i = 0; i < bookArray.length; i++) {
+            var currentPrice = bookArray[i].price;
+            if (currentPrice > maxPrice) {
+                maxPrice = currentPrice;
+                mostExpensiveBook = bookArray[i];
+            }
+        }
+
+        document.write("<hr>");
+        document.write(`가장 가격이 비싼 책은 ${mostExpensiveBook.title}`);
+
+        // HTML5, 황기태, 20000
+        // 반응형 웹, 이기자, 15000
+        // 안드로이드, 우재남, 17000
+        // 모두의 깃, 강민철, 18000
+        // GIT, 진유림, 12000
+
+    </script>
+
+</body>
+
+
+
+</html>

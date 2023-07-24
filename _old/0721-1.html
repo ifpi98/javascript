@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h3> String 객체의 메소드 활용</h3>
+    <hr>
+
+    <script>
+        let a = new String("Boys and Girls");
+        let b = "!!";
+        document.write("a : " + a + "<br>");
+        document.write("b : " + b + "<br><hr>");
+    
+        document.write(a.charAt(0) + "<br>");
+        document.write(a.concat(b, "입니다") + "<br>");
+
+        document.write(a.indexOf("s") + "<br>");
+        document.write(a.indexOf("And") + "<br>");
+
+        document.write(a.slice(5,8) + "<br>");
+
+        document.write(a.substr(5,3) + "<br>")
+        document.write(a.toUpperCase() + "<br>")
+        document.write(a.replace("and", "or") + "<br>")
+        document.write("          kasie            ".trim()+ "<br><hr>")
+        
+        let sub = a.split(" ");
+        document.write("a를 빈칸으로 분리<br>");
+        for (let i=0; i < sub.length; i++){
+            document.write("sub" + i + "=" + sub[i] + "<br>")
+        }
+        document.write("<hr>")
+
+        var rInt1 = parseInt(Math.random()*9)+1;
+        var rInt2 = parseInt(Math.random()*9)+1;
+        // document.write("값은 " + rInt1);
+
+        var question = `${rInt1} * ${rInt2} 값은 얼마입니까?`
+
+        var answer = prompt(question,'');
+
+        function gopsem(_number1, _number2){
+            return _number1 * _number2
+        }
+
+        if(answer === null){
+            alert("구구단 연습을 종료합니다.");
+        } else if (gopsem(rInt1, rInt2) == answer){
+            str = `정답! ${rInt1}*${rInt2}=${gopsem(rInt1, rInt2)}입니다`;
+        } else 
+            str = `아니오! ${rInt1}*${rInt2}=${gopsem(rInt1, rInt2)}입니다`;
+
+        document.write(str);
+
+
+
+    </script>
+
+    
+
+</body>
+</html>

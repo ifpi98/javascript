@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- <p style="color:blue">이것은<span style="color:red">문장입니다.</span></p>
+    <form>
+        <input type="text">
+        <input type="button" value="테스트">
+        <hr>
+    </form> -->
+
+    <h3> DOM 객체 p의 프로퍼티, 스타일, 이벤트 리스너</h3>
+    <hr>
+    <p id="firstP" style="color:blue; background:yellow" onclick="this.style.color='teal'">이것은 <span
+            style="color:red">문장입니다.</span></p>
+
+    <script>
+        let p = document.getElementById('firstP');
+        let text = 'p.id = ' + p.id + "\n";
+        text += "p.tagname = " + p.tagName + "\n";
+        text += "p.innerHTML = " + p.innerHTML + "\n";
+        text += "p.style.color = " + p.style.color + "\n";
+        text += "p.onclick = " + p.onclick + "\n";
+        text += "p.childElementCount = " + p.childElementCount + "\n";
+        text += "p.offsetWidth = " + p.offsetWidth + "\n";
+        text += "p.offsetHeight = " + p.offsetHeight + "\n";
+        text += "p.offsetLeft = " + p.offsetLeft + "\n";
+        text += "p.offsetTop = " + p.offsetTop + "\n";
+        // alert(text);
+    </script>
+
+    <h3> CSS 스타일 동적 변경</h3>
+    <hr>
+    <p style="color:blue"> 이것은 <span id="mySpan" style="color:red">문장입니다.</span> </p>
+    <input type="button" value="스타일변경" onclick="change()">
+
+    <script>
+
+        function change() {
+            let span = document.getElementById("mySpan");
+            span.style.color = "green";
+            span.style.fontWeight = "bold";
+            span.style.fontSize = "40px";
+            span.style.display = "block";
+            span.style.width = "6em";
+            span.style.border = "3px dotted magenta"
+            span.style.margin = "20px";
+            span.style.padding = "10px";
+        }
+
+
+
+    </script>
+
+    <hr>
+    <h3> innerHTML 활용 : 아래 글자에 클릭하면 예쁜 강아지가 보입니다.</h3>
+    <hr>
+    <p id="firstP2" style="color:blue" onclick="change2()">여기에 <span style="color:red">클릭하세요</span>
+    </p>
+
+
+    <script>
+
+        function change2() {
+            let fP = document.getElementById("firstP2");
+            fP.innerHTML = '나의 <img src="./imgs/dog1.jpg" width="100px"> 강아지';
+        }
+
+    </script>
+
+    <hr>
+    <h3> this 활용</h3>
+    <button onclick="change3(this, '30px', 'red')">버튼</button>
+    <button onclick="change3(this, '30px', 'blue')">버튼</button>
+    <div onclick="change3(this, '25px', 'orange')"> 여기 클릭하면 크기와 색 변경</div>
+    
+    <script>
+
+        function change3(_target, _size, _color){
+            var btn = _target;
+            btn.style.fontSize = _size;
+            btn.style.color = _color;
+        }
+
+    </script>
+
+</body>
+
+</html>

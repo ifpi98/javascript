@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+
+    document.write("<h3>[]로 배열 만들기</h3>");
+    document.write("<hr>");
+
+    var plots = [20,5,8,15,20];
+    document.write("var plots = [20,5,8,15,20]");
+    document.write("<br>");
+
+    for (var i = 0; i<plots.length ; i++){
+    
+        for (var j = 0; j < plots[i]; j++){
+            document.write("*")
+        }
+        document.write(plots[i]);
+        document.write("<br>");
+}
+</script>
+
+<h3> Array 객체로 배열 만들기</h3>
+<hr>
+<script>
+    let degrees = new Array();
+    degrees[0] = 15.1;
+    degrees[1] = 15.4;
+    degrees[2] = 16.1;
+    degrees[3] = 17.5;
+    degrees[4] = 19.2;
+    degrees[5] = 21.4;
+    
+    let sum = 0;
+    for (let i=0; i<degrees.length; i++){
+        sum += degrees[i];
+    }
+
+    document.write("평균 온도는 " + sum/degrees.length + "<br>");
+    document.write("<hr>");
+
+    function pr(msg, arr) {
+        document.write(msg + arr.toString() + "<br>")
+    }
+
+</script>
+
+    <h3> Array 객체의 메소드 활용</h3>
+    <hr>
+    <script>
+        let a = new Array("황", "김", "이");
+        let b = new Array("박");
+        let c;
+
+        pr("배열 a = ", a);
+        pr("배열 b = ", b);
+        document.write("<hr>");
+
+        c = a.concat(b);
+        pr("c = a.concat(b) 후 c = ", c)
+        pr("c = a.concat(b) 후 a = ", a)
+
+        c = a.join("##");
+        pr("c = a.join() 후 c = ", c)
+        pr("c = a.join() 후 a = ", a)
+
+        c = a.reverse();
+        pr("c = a.reverse() 후 c = ", c)
+        pr("c = a.reverse() 후 a = ", a)
+
+        c = a.slice(1,2);
+        pr("c = a.slice(1,2) 후 c = ", c)
+        pr("c = a.slice(1,2) 후 a = ", a)
+
+        c = a.sort();
+        pr("c = a.sort() 후 c = ", c)
+        pr("c = a.sort() 후 a = ", a)
+
+        c = a.toString();
+        document.write("a.toString() : " + c);
+
+    </script>
+    <h3> reverse()를 쓰면 원래 배열의 값이 바뀐다.</h3>
+    <h3> sort()를 쓰면 원래 배열의 값이 바뀐다.</h3>
+
+        
+
+</body>
+</html>

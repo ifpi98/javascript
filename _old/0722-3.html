@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+    div {
+        display: inline-block;
+        width: 150px;
+        padding: 10px;
+        /* margin: 10px */
+        /* background-color: #fac; */
+    }
+
+    </style>
+
+</head>
+<body>
+    
+    <div></div>    <div></div>    <div></div>    <div></div>
+    <div></div>    <div></div>    <div></div>    <div></div>
+    <div></div>    <div></div>    <div></div>    <div></div>
+    <div></div>    <div></div>    <div></div>    <div></div>
+ 
+    <script>
+
+        var divArray = document.getElementsByTagName("div");
+        var colorArray = [];
+
+        function random255_3() {
+            for (var i = 0; i < 3 ; i++){
+                colorArray[i] = parseInt(Math.random()*256);
+            }
+            return colorArray;
+        }
+
+        for (var i = 0; i < 16; i++){
+            var tempColorArray = random255_3();
+            divArray[i].style.backgroundColor = `rgb(${tempColorArray[0]},${tempColorArray[1]},${tempColorArray[2]})`;
+            divArray[i].innerHTML = `rgb(${tempColorArray[0]},${tempColorArray[1]},${tempColorArray[2]})`;
+        }
+ 
+        document.write("<hr>");
+
+        function newColor() {
+            let r = Math.floor(Math.random()*256);
+            let g = Math.floor(Math.random()*256);
+            let b = Math.floor(Math.random()*256);
+            return "rgb(" + r + "," + g + "," + b + ")";
+        }
+
+        for (let i=0; i < 16; i++){
+            let str = "<div style='background-color:";
+            let color = newColor();
+            str += color;
+            str += "'>" + color + "</div>";
+            document.write(str);
+        }
+
+        document.write("<hr>");
+        
+
+
+        
+    </script>
+
+</body>
+</html>

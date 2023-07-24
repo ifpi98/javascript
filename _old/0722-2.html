@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h2> 버튼을 클릭하면 이미지가 교체됩니다. </h2>
+    <img id='car' src="/imgs/car1.jpg" height="100px">
+    <hr>
+    <button id="btn"> 이미지 교체하기 </button>
+
+    <script>
+
+        var img = document.getElementById("car");
+        var btn = document.getElementById('btn');
+
+        btn.addEventListener('click', function () {
+            changeColor();
+        })
+
+        function changeColor() {
+
+            var randomNumber = parseInt(Math.random() * 4) + 1;
+            var str = `/imgs/car${randomNumber}.jpg`;
+            img.src = str;
+
+        }
+
+        // let account = new Object();
+        // account.owner = "황기태";
+        // account.code = "111";
+        // account.balance = 35000;
+        // account.inquiry = inquiry;
+        // account.deposit = deposit;
+        // account.withdraw = withdraw;
+
+        let account = {
+            owner: "황기태",
+            code: "111",
+            balance: 35000,
+
+            inquiry: function () {
+                return this.balance;
+            },
+
+            deposit: function (money) {
+                this.balance += money;
+            },
+
+            withdraw: function (money) {
+                this.balance -= money;
+                return money;
+            }
+
+        }
+
+        document.write("account :");
+        document.write(account.owner + ", ");
+        document.write(account.code + ", ");
+        document.write(account.balance + "<br>");
+
+        account.deposit(10000);
+        document.write("저금 후 잔액은 " + account.inquiry());
+        document.write("<br>");
+        account.withdraw(5000);
+        document.write("인출 후 잔액은 " + account.inquiry());
+        document.write("<br>");
+
+
+        function Student(name, score) {
+            this.univ = "한국대학";
+            this.name = name;
+            this.score = score;
+            this.getGrade = function () {
+                if (this.score > 80) return "A";
+                else if (this.score > 60) return "B";
+                else return "F";
+            }
+        }
+
+        let kitae = new Student("황기태", 75);
+        let jaemoon = new Student("이재문", 93);
+
+        document.write(kitae.univ + ", " + kitae.name + "의 학점은 " + kitae.getGrade() + "<br>");
+        document.write(jaemoon.univ + ", " + jaemoon.name + "의 학점은 " + jaemoon.getGrade() + "<br>");
+
+        document.write("<hr>");
+        document.write("난수 10개 생성");
+        document.write("<hr>");
+
+        function randNumber() {
+            randN = parseInt(Math.random() * 100) + 1;
+            return randN;
+        }
+
+        var numberArray = [];
+
+        for (var i = 0; i < 10; i++) {
+            numberArray[i] = randNumber();
+            document.write(numberArray[i] + " ");
+        }
+
+        document.write("<br>");
+        // numberArray.sort();
+        numberArray.sort(function (a, b) {
+            return a - b;
+        });
+
+        document.write("<hr>");
+        document.write("제일 큰 수는 " + numberArray[9]);
+        document.write("<hr>");
+
+        for (var i = 0; i < 10; i++) {
+            document.write(numberArray[i] + " ");
+        }
+
+
+    </script>
+
+
+
+</body>
+
+</html>

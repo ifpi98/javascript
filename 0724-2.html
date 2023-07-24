@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script> 
+    let text = "문서 로딩 중일 때 readyState = " + document.readyState + "<br>";
+    </script>
+
+</head>
+<body style="background-color: yellow; color:blue;" onload="printProperties()"> 
+
+    <h3> document의 주요 프로퍼티</h3>
+    <hr>
+    <a href="http://www.naver.com">네이버 홈페이지</a>
+    <div>이곳은 div 영역입니다.</div>
+    <input id="input" type="text" value="여기 포커스가 있습니다.">
+    <hr>
+    <p id="Propert"></p>
+
+    <script>
+        function printProperties() {
+            document.getElementById('input').focus();
+
+            text += "1. location =" + document.location + "<br>;"
+            text += "2. URL =" + document.URL + "<br>;"
+            text += "3. title =" + document.title + "<br>;"
+            text += "4. head.id =" + document.head.id + "<br>;"
+            text += "5. body color =" + document.body.style.color + "<br>;"
+            text += "6. domain =" + document.domain + "<br>;"
+            text += "7. lastModified =" + document.lastModified + "<br>;"
+            text += "8. defaultView =" + document.defaultView + "<br>;"
+            text += "9. 로드 완료 후 readyState =" + document.readyState + "<br>;"
+            text += "10. referrer =" + document.referrer + "<br>;"
+            text += "11. activeElement =" + document.activeElement.nodeValue + "<br>;"
+            text += "12. documentElement이 태그 이름 = " + document.documentElement.tagName + "<br>";
+
+            // document.getElementById('Propert').innerHTML = text;
+        }
+
+    </script>
+    
+    <h3> 내가 좋아하는 과일
+        <button onclick="change()">누르세요</button>
+    </h3>
+    <hr>
+    저는 빨간 <span>사과</span>를 좋아해서 먹고 있어요. 운동할 때는 <span>바나나</span>를 먹지요. 달콤한 향기를 품은 <span>체리</span>와 <span>자두</span>를 좋아합니다.
+
+    <script>
+
+        function change(){
+            let spanArray = document.getElementsByTagName('span');
+            for (var i = 0; i < spanArray.length; i++ ){
+                spanArray[i].style.color = "orchid";
+                spanArray[i].style.fontSize = '20px';
+            }
+        }        
+
+    </script>
+    
+    <hr>
+    <h3> write()와 writeln()</h3>
+    <hr>
+
+    <script>
+        document.write("<h3>동물원에 소풍갑시다</h3>");
+        document.write("<p style='color:blue'>날씨가 좋아");
+        document.write("소풍갑니다</p>");
+        document.write(2+3);
+        document.write("명입니다.<br>");
+        
+        document.writeln(5);
+        document.writeln("명입니다.<br>");
+
+    </script>
+
+    <hr>
+    <h3> write()를 잘못 사용하는 예</h3>
+    <hr>
+    <p> 웹브라우저의 바탕 아무 곳이나 클릭해 보세요.</p>
+
+    
+
+
+</body>
+</html>

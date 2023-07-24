@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h3> Date 객체로 현재 시간 알아내기</h3>
+    <hr>
+
+    <script>
+        var date = new Date();
+        document.write("현재 시간: " + date.toUTCString());
+        document.write("<hr>");
+        document.write(date.getFullYear() + "년도<br>");
+        document.write(date.getMonth() + "월<br>");
+        document.write(date.getDay() + "일<br>");
+        document.write(date.getHours() + "시<br>");
+        document.write(date.getMinutes() + "분<br>");
+        document.write(date.getSeconds() + "초<br>");
+        document.write(date.getMilliseconds() + "밀리초<br>");
+        document.write("<hr>");
+        var next = new Date(2023, 7, 15, 12, 12, 12);
+        // next.setFullYear(2023);
+        // next.setMonth(7);
+        // next.setDate(15);
+        // next.setHours(12);
+        // next.setMinutes(12);
+        // next.setSeconds(12);
+        document.write("next.toLocaleString() : " + next.toLocaleString());
+        document.write("<hr>");
+                
+        document.write(`<h3> 페이지 방문 초시간이 짝수이면 violet, 홀수이면 lightskyblue 배경</h3>`);
+        document.write("<hr>");
+        document.write(`<h3 id="timeAndBackground">현재 시간: ${date.toLocaleString()}</h3>`);
+        
+        GetSecondsNow();
+        setInterval(GetSecondsNow, 1000);
+        
+        function GetSecondsNow() {
+            date = new Date();
+            var nowDate = date.toLocaleString();
+            var timeAndBackgroundElement = document.getElementById("timeAndBackground");
+            timeAndBackgroundElement.innerHTML = "현재 시간: "+ nowDate;
+            
+            if ((date.getSeconds()) % 2 == 0) {
+                // document.write("짝수")
+                document.body.style.backgroundColor = "violet";
+            } else {
+                // document.write("홀수")
+                document.body.style.backgroundColor = "lightskyblue";
+            }
+
+            
+            
+        }
+    </script>
+
+    <!-- <h3 id="timeAndBackground"> 페이지 방문 초시간이 짝수이면 violet, 홀수이면 lightskyblue 배경 - 현재 시간: </h3> -->
+    <hr>
+
+</body>
+
+</html>
