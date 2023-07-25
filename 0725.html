@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div {
+            background: skyblue;
+            line-height: 1.6em;
+            padding: 10px;
+            box-sizing: border-box;
+            display: inline-block;
+        }
+    </style>
+
+</head>
+
+<body onload="changeImage()">
+
+    <h3> 마우스 관련 이벤트 리스너</h3>
+    <hr>
+    <div> 마우스 관련
+        <span onmousedown="down(this)" onmouseup="up(this)" onmouseover="over(this)" onmouseout="out(this)"
+            onwheel="wheel(event, this)" style="display:inline-block">이벤트</span>가 발생합니다.
+    </div>
+
+    <script>
+        let width = 1;
+        function down(obj) {
+            obj.style.fontStyle = "italic"
+        }
+        function up(obj) {
+            obj.style.fontStyle = "normal"
+        }
+        function over(obj) {
+            obj.style.borderColor = "violet"
+        }
+        function out(obj) {
+            obj.style.borderColor = "lightgray"
+        }
+
+        function wheel(e, obj) {
+            if (e.wheelDelta < 0) {
+                width--;
+                if (width < 0) width = 0;
+            } else {
+                width++;
+            }
+            obj.style.borderStyle = "ridge";
+            obj.style.borderWidth = width + "px"
+        }
+
+    </script>
+
+    <hr>
+    <h3> 마우스 이벤트 객체의 프로퍼티와 onmousemove</h3>
+    <hr>
+    이미지 위에 마우스를 움직일 때 onmousemove 리스너가 실행되고,
+    마우스의 위치를 보여줍니다.<br><br>
+
+    <img src="./imgs/back1.png" width="100" onmousemove="where(event)"><br><br>
+    <div id="div"></div>
+
+    <script>
+        let div = document.getElementById("div");
+        function where(e) {
+            let text = "눌러진 마우스 버튼=" + e.button + "<br>";
+            text += "스크린을 기준으로 한 좌표(screenX, screenY)=" + e.screenX + "," + e.screenY + "<br>"
+            text += "브라우저 윈도우의 문서 출력 영역 기준(clientX, clientY)=" + e.clientX + "," + e.clientY + "<br>"
+            text += "타겟 객체 내(offsetX, offsetY=" + e.offsetX + "," + e.offsetY + "<br>";
+            text += "타겟 객체의 부모 객체(X, Y)=" + e.x + "," + e.y + "\n";
+            div.innerHTML = text;
+
+        }
+    </script>
+
+    <hr>
+    <h3> onload로 이미지 크기 출력</h3>
+    <hr>
+    <form>
+        <select id="sel" onchange="changeImage()">
+            <option value="./imgs/dog1.jpg">개
+            <option value="./imgs/cat1.png">고양이
+            <option value="./imgs/car1.jpg">차
+        </select>
+        <span id="mySpan">이미지 크기</span>
+    </form>
+    <p>
+        <img id="myImg" src="./imgs/dog1.jpg" width=200 alt=".">
+    </p>
+
+    <script>
+
+        function changeImage() {
+            var selected = document.getElementById("sel");
+
+            var img = document.getElementById("myImg");
+            img.onload = function () {
+                var mySpan = document.getElementById('mySpan');
+                mySpan.innerHTML = img.width + "x" + img.height;
+            }
+
+            var index = selected.selectedIndex;
+            img.src = selected.options[index].value;
+
+        }
+
+    </script>
+
+    <h3>new Image()로 이미지 로딩</h3>
+    <hr>
+    <p>이미지를 클릭하면 다음 이미지를 보여줍니다. </p>
+    <img style="border:20px ridge wheat" src="./imgs/otherimage1.jpg" alt="." width="200" height="200"
+        onclick="change(this)">
+
+    <script>
+
+        let files = ["./imgs/otherimage1.jpg", "./imgs/otherimage2.jpg", "./imgs/otherimage3.jpg", "./imgs/otherimage4.jpg", "./imgs/otherimage5.jpg", "./imgs/otherimage6.jpg", "./imgs/otherimage7.jpg", "./imgs/otherimage8.jpg"];
+
+        let imgs = new Array();
+        for (let i = 0; i < files.length; i++) {
+            imgs[i] = new Image();
+            imgs[i].src = files[i];
+        }
+
+        let next = 1;
+        function change(img) {
+            img.src = imgs[next].src;
+            next++;
+            next %= imgs.length;
+        }
+
+    </script>
+
+    <h3> 버튼을 클릭하면 선택된 라디오 버튼의 value를 출력합니다.</h3>
+    <hr>
+    <form>
+        <input type="radio" name="city" value="seoul" checked>서울
+        <input type="radio" name="city" value="busan">부산
+        <input type="radio" name="city" value="chunchen">춘천
+        <input type="button" value="find checked" onclick="findChecked()">
+    </form>
+
+    <script>
+
+        function findChecked() {
+            var inputs = document.getElementsByTagName('input');
+
+            for (var i = 0; i < 3; i++) {
+                if (inputs[i].checked == true) {
+                    alert(inputs[i].value);
+                }
+            }
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

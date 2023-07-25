@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function startScroll(interval){
+            setInterval("autoScroll()",interval);
+        }
+
+        function autoScroll() {
+            window.scrollBy(0,10);
+        }
+    </script>
+</head>
+<body onload="startScroll(1000)">
+
+    <h3> 자동 스크롤 페이지</h3>
+    <hr>
+    <h3> 꿈길(이동순)</h3>
+    꿈길에<br>
+    발자취가 있다면<br>
+    님의 집 창밖<br>
+    그 돌계단 (중략)<br>
+    모래가 되고 (중략)<br>
+    하지만<br>
+    그 꿈길에서 (중략)<br>
+    나는 그것이 (중략)<br>
+    이 밤도<br>
+    나는 님의 집 창밖<br>
+    그 돌계단 위에 홀로 서서<br>
+    혹시라도 님의 (중략)<br>
+    고개 숙이고 엿들어요.<br>
+
+
+    <h3> 물품을 선택하면 금액이 자동 계산됩니다.</h3>
+    <hr>
+    <form>
+        <input type="checkbox" name="hat" value="10000" onclick="calc2(this)"> 모자 1만원
+        <input type="checkbox" name="shoes" value="30000" onclick="calc2(this)"> 구두 3만원
+        <input type="checkbox" name="bag" value="80000" onclick="calc2(this)"> 가방 8만원<br> 지불하실 금액
+        <input type="text" id="sumtext" value="0">
+
+    </form>
+
+    <script>
+        
+
+        function calc(_target){
+            var checkboxes = document.getElementsByTagName("input");
+            var sum = 0;
+            for (var i = 0; i < 3; i++) {
+                if (checkboxes[i].checked == true){
+                    sum += parseInt(checkboxes[i].value);
+                }
+                // alert(checkboxes[i].value);
+            }
+            
+            var sumtext = document.getElementById('sumtext');
+            sumtext.value = sum;
+        }
+
+        var sum2 = 0;
+        function calc2(_target){
+            if(_target.checked){
+                sum2 += parseInt(_target.value);
+            } else {
+                sum2 -= parseInt(_target.value);
+            }
+
+            document.getElementById('sumtext').value = sum2;
+        }
+        
+
+    </script>
+
+    <h3> 키 리스너와 키 이벤트 객체의 프로퍼티</h3>
+    <hr>
+    텍스트 창에 키를 눌러 보세요. ALT, SHIFT, CTRL키도 가능합니다.<br>
+    <input type="text" id="text" onkeydown="whatKeyDown(event)">
+    <div id="div" style="background-color: skyblue; width: 250px; height: 50px;"></div>
+
+    <script>
+    
+    function whatKeyDown(e){
+
+        let str = "";
+        var div = document.getElementById('div');
+        str += `눌러진 키의 문자열은 : ${e.key}<br>`
+        str += `눌러진 키의 이름은 : ${e.code}<br>`
+        div.innerHTML = str;
+
+    }
+    
+
+    </script>        
+
+    <h3> 이미지에 마우스를 올리고 5초간 그대로 있을 때 사이트로 이동</h3><hr>
+    <img id="img" src="./imgs/naver1.png" onmouseover="startTimer(5000)" onmouseout="cancelTimer()">
+
+    <script>
+
+    let timerID = null;
+
+    function startTimer(time) {
+        timerID = setTimeout("load('http://www.naver.com')", time)
+        document.getElementById('img').title = "타이머 작동 시작..."
+
+    }
+
+    function myAlert(time){
+        alert(time + "초 지났습니다.");
+    }
+
+    timerID = setTimeout("myAlert(3)",3000);
+    clearTimeout(timerID);
+    </script>
+
+    <h3> 텍스트 자동 회전, 마우스로 클릭하면 중단 </h3>
+    <hr>
+    <div>
+        <span id="span" style="background-color: yellow"> 자동 회전하는 텍스트입니다.</span>
+    </div>
+
+    <script>
+        let span = document.getElementById('span');
+        let timerID2 = setInterval("doRotate()",200);
+
+        span.onclick = function(e){
+            clearInterval(timerID2);
+        }
+
+        function doRotate(){
+            let str = span.innerHTML;
+            let firstChar = str.substr(0,1);
+            let remains = str.substr(1, str.length-1);
+            str = remains + firstChar;
+            span.innerHTML = str;
+        }
+
+    </script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=+, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body onload="makeExpression();startTimer()">
+
+    <h3>산수 문제를 풀어 봅시다.</h3>
+    문제는 자동으로 생성되며, 10초가 지나면 자동 채점됩니다.
+    <div>남은 시간<span id="clock">0</span></div>
+    <hr>
+    <form>
+        <table>
+            <tr>
+                <td class="question"></td>
+                <td><input class="answer" type="text" size="8"></td>
+            </tr>
+            <tr>
+                <td class="question"></td>
+                <td><input class="answer" type="text" size="8"></td>
+            </tr>
+            <tr>
+                <td class="question"></td>
+                <td><input class="answer" type="text" size="8"></td>
+            </tr>
+            <tr>
+                <td class="question"></td>
+                <td><input class="answer" type="text" size="8"></td>
+            </tr>
+            <tr>
+                <td><button type="button" onclick="makeExpression();startTimer()">다시</button></td>
+                <td><span id="score">0</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+    
+        function makeExpression() {
+
+            questionArray = new Array();
+            answerArray = new Array();
+
+            for (var i = 0; i < 4; i++) {
+
+                ranNum1 = parseInt((Math.random() * 20) + 1);
+                ranNum2 = parseInt((Math.random() * 20) + 1);
+                ranNum3 = parseInt(Math.random() * 4);
+                var stringA = ranNum1;
+                var answer = 0;
+
+                switch (ranNum3) {
+                    case 0:
+                        stringA += "+";
+                        answer = ranNum1 + ranNum2;
+                        break;
+                    case 1:
+                        stringA += "-";
+                        answer = ranNum1 - ranNum2;
+                        break;
+                    case 2:
+                        stringA += "*";
+                        answer = ranNum1 * ranNum2;
+                        break;
+                    case 3:
+                        stringA += "/";
+                        answer = ranNum1 / ranNum2;
+                        break;
+                    default:
+                        stringA += "+";
+                        answer = ranNum1 + ranNum2;
+                        break;
+                }
+
+                stringA += ranNum2
+                questionArray[i] = stringA;
+                answer[i] = answer;
+            }
+
+            var questions = document.getElementsByClassName('question');
+            var answers = document.getElementsByClassName('answer');
+
+            for (var i = 0; i < questions.length; i++) {
+                questions[i].innerHTML = questionArray[i];
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
