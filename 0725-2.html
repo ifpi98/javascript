@@ -39,17 +39,32 @@
     </form>
 
     <script>
-    
+
+        var questionArray = new Array();    
+        var answerArray = new Array();
+        var questions = document.getElementsByClassName('question');
+        var answers = document.getElementsByClassName('answer');
+        var span = document.getElementById('clock');
+        var clockTime = 11;
+        var timerID = null;
+
         function makeExpression() {
 
-            questionArray = new Array();
-            answerArray = new Array();
+            clockTime = 10;
+
+            if (timerID != null){
+                clearTimeout(timerID);
+            }
+
+            for (var i = 0; i < 4; i++) {
+                answers[i].value = "";
+            }
 
             for (var i = 0; i < 4; i++) {
 
                 ranNum1 = parseInt((Math.random() * 20) + 1);
                 ranNum2 = parseInt((Math.random() * 20) + 1);
-                ranNum3 = parseInt(Math.random() * 4);
+                ranNum3 = parseInt(Math.random() * 3);
                 var stringA = ranNum1;
                 var answer = 0;
 
@@ -78,16 +93,46 @@
 
                 stringA += ranNum2
                 questionArray[i] = stringA;
-                answer[i] = answer;
+                answerArray[i] = answer;
             }
-
-            var questions = document.getElementsByClassName('question');
-            var answers = document.getElementsByClassName('answer');
 
             for (var i = 0; i < questions.length; i++) {
                 questions[i].innerHTML = questionArray[i];
+                questions[i].style.textDecoration = "none";
             }
 
+        }
+
+        function startTimer() {
+            clockTime = clockTime - 1;
+            span.innerHTML = clockTime;
+            if(clockTime == 0){
+                checkQuiz();
+            } else {
+                timerID = setTimeout("startTimer()",1000);
+                // alert("여기", _time);
+            }
+        }
+
+        function checkQuiz(){
+            var score = document.getElementById('score');
+            var total = 0;
+
+            for (var i = 0; i < 4; i++){
+                if( parseInt(answerArray[i]) == parseInt(answers[i].value)){
+                    answers[i].value = answers[i].value + " - 정답"
+                    // alert("여기1")
+                    total++;
+                    
+                } else{
+                    answers[i].value = answers[i].value + " - 오답";
+                    questions[i].style.textDecoration = "line-through";
+                    // alert(answerArray[i])
+                    // alert(answers[i].innerHTML)
+                }
+            }
+
+            score.innerHTML = total;
         }
 
     </script>
